@@ -1,2 +1,4 @@
 INSERT INTO TBL_CONTATO (  ID,  NOME_COMPLETO,  TELEFONE,  EMAIL,  ENDERECO,  DATA_NASCIMENTO,  CATEGORIA,  APELIDO,  CIDADE,  EMPRESA,  NOTAS_ADICIONAIS,  CONTATOFAVORITO)
 VALUES (  1,  'Julho',  '(11) 99999-9999',  'julho@gmail.com',  'rua domingos, 234, candelaria',  '1987-12-01',  'Trabalho',  'Julhadas',  'Itu',  NULL,  NULL,  TRUE);
+INSERT INTO TBL_CONTATO (  ID,  NOME_COMPLETO,  TELEFONE,  EMAIL,  ENDERECO,  DATA_NASCIMENTO,  CATEGORIA,  APELIDO,  CIDADE,  EMPRESA,  NOTAS_ADICIONAIS,  CONTATOFAVORITO)
+VALUES (  2,  'Frederico',  '(11) 11111-1111',  'frederico@gmail.com',  'rua sabados, 458, padre vivo',  '2001-12-01',  'Trabalho',  'Fredericão',  'Salto',  NULL,  NULL,  FALSE);

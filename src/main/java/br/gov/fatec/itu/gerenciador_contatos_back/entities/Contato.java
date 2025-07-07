@@ -3,6 +3,8 @@ package br.gov.fatec.itu.gerenciador_contatos_back.entities;
 import java.io.Serializable;
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,6 +30,8 @@ public class Contato implements Serializable {
     private String empresa;
     private String site;
     private String notasAdicionais;
+
+    @JsonProperty("contatofavorito")
     private Boolean contatofavorito;
 
     public Long getId() {

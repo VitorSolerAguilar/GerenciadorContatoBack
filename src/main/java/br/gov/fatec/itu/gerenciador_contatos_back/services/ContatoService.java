@@ -40,6 +40,7 @@ public class ContatoService {
         aux.setApelido(contato.getApelido());
         aux.setCidade(contato.getCidade());
         aux.setEmpresa(contato.getEmpresa());
+        aux.setSite(contato.getSite());
         aux.setNotasAdicionais(contato.getNotasAdicionais());
         aux.setContatofavorito(contato.getContatofavorito());
 

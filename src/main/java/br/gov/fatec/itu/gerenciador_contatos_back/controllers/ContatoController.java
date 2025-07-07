@@ -1,5 +1,6 @@
 package br.gov.fatec.itu.gerenciador_contatos_back.controllers;
 
+import java.lang.reflect.AccessFlag.Location;
 import java.net.URI;
 import java.util.List;
 
@@ -38,9 +39,12 @@ public class ContatoController {
 
     @PostMapping
     public ResponseEntity<Contato> save(@RequestBody Contato contato) {
+        if (contato.getId() != null) {
+            return ResponseEntity.badRequest().build();
+        }
         Contato salvo = service.save(contato);
         URI location = URI.create("/contatos/" + salvo.getId());
-        return ResponseEntity.created(null).body(service.save(contato));
+        return ResponseEntity.created(location).body(salvo);
     }
 
     @DeleteMapping("{id}")

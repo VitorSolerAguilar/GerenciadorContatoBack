@@ -26,7 +26,7 @@ public class Contato implements Serializable {
     private String apelido;
     private String cidade;
     private String empresa;
-    private String Site;
+    private String site;
     private String notasAdicionais;
     private Boolean Contatofavorito;
 
@@ -111,11 +111,11 @@ public class Contato implements Serializable {
     }
 
     public String getSite() {
-        return Site;
+        return site;
     }
 
     public void setSite(String site) {
-        Site = site;
+        this.site = site;
     }
 
     public String getNotasAdicionais() {

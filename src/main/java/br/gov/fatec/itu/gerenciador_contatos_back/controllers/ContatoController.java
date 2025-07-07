@@ -1,5 +1,6 @@
 package br.gov.fatec.itu.gerenciador_contatos_back.controllers;
 
+import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 import br.gov.fatec.itu.gerenciador_contatos_back.entities.Contato;
 import br.gov.fatec.itu.gerenciador_contatos_back.services.ContatoService;
 
-@CrossOrigin    
+@CrossOrigin
 @RestController
 @RequestMapping("contatos")
 public class ContatoController {
-    
-     @Autowired
+
+    @Autowired
     private ContatoService service;
 
     @GetMapping
@@ -30,8 +31,15 @@ public class ContatoController {
         return ResponseEntity.ok(service.getAll());
     }
 
+    @GetMapping("{id}")
+    public ResponseEntity<Contato> getById(@PathVariable long id) {
+        return ResponseEntity.of(service.getById(id));
+    }
+
     @PostMapping
     public ResponseEntity<Contato> save(@RequestBody Contato contato) {
+        Contato salvo = service.save(contato);
+        URI location = URI.create("/contatos/" + salvo.getId());
         return ResponseEntity.created(null).body(service.save(contato));
     }
 
@@ -42,9 +50,9 @@ public class ContatoController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Void> update(@PathVariable long id, @RequestBody Contato contato) {
-        service.update(contato, id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<Contato> update(@PathVariable long id, @RequestBody Contato contato) {
+        Contato atualizado = service.update(contato, id);
+        return ResponseEntity.ok(atualizado);
     }
 
 }

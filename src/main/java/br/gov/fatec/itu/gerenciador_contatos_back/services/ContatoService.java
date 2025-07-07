@@ -1,6 +1,7 @@
 package br.gov.fatec.itu.gerenciador_contatos_back.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +12,7 @@ import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class ContatoService {
-    
+
     @Autowired
     private ContatoRepository repository;
 
@@ -19,12 +20,16 @@ public class ContatoService {
         return repository.findAll();
     }
 
+    public Optional<Contato> getById(long id) {
+        return repository.findById(id);
+    }
+
     public Contato save(Contato contato) {
         return repository.save(contato);
     }
 
-    public void update(Contato contato, long id) {
-        Contato aux = repository.getReferenceById(id);
+    public Contato update(Contato contato, long id) {
+        Contato aux = repository.findById(id).orElseThrow(() -> new EntityNotFoundException("Contato não encontrado"));
 
         aux.setNomeCompleto(contato.getNomeCompleto());
         aux.setTelefone(contato.getTelefone());
@@ -38,8 +43,8 @@ public class ContatoService {
         aux.setNotasAdicionais(contato.getNotasAdicionais());
         aux.setContatofavorito(contato.getContatofavorito());
 
-        repository.save(aux);
-    }    
+        return repository.save(aux);
+    }
 
     public void delete(long id) {
         if (repository.existsById(id)) {

@@ -28,7 +28,7 @@ public class Contato implements Serializable {
     private String empresa;
     private String site;
     private String notasAdicionais;
-    private Boolean Contatofavorito;
+    private Boolean contatofavorito;
 
     public Long getId() {
         return id;
@@ -127,11 +127,11 @@ public class Contato implements Serializable {
     }
 
     public Boolean getContatofavorito() {
-        return Contatofavorito;
+        return contatofavorito;
     }
 
     public void setContatofavorito(Boolean contatofavorito) {
-        Contatofavorito = contatofavorito;
+        this.contatofavorito = contatofavorito;
     }
 
     @Override
